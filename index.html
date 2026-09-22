@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohan Digital Learning</title>
+<style>
+:root{--blue:#0866e9;--navy:#06365f;--ink:#10243e;--muted:#5c6d83;--line:#dce7f2;--bg:#f5f8fc}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg)}
+header{display:flex;align-items:center;gap:24px;justify-content:space-between;padding:14px 4%;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.brand{font-size:25px;font-weight:800;color:var(--navy);white-space:nowrap}.brand span{color:var(--blue)}.tag{font-size:12px;color:var(--muted);margin-top:4px}
+nav{display:flex;gap:8px;flex-wrap:wrap}nav button,.login{border:0;background:transparent;padding:11px 14px;border-radius:8px;cursor:pointer;color:var(--ink);font-size:14px}nav button.active,nav button:hover,.login{background:var(--blue);color:white}
+.search{padding:11px 14px;border:1px solid var(--line);border-radius:24px;width:190px}.hero{padding:48px 5%;color:white;background:linear-gradient(110deg,#06365f,#075f9b 58%,#0c2949);display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:270px}
+.hero h1{font-size:clamp(30px,4vw,46px);margin:8px 0}.hero h1 span{color:#ffda23}.hero p{max-width:580px;line-height:1.6;color:#e7f2ff}.actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}.btn{background:var(--blue);color:white;border:0;padding:12px 20px;border-radius:8px;cursor:pointer;font-size:15px}.btn.outline{border:1px solid white;background:transparent}.hero-art{font-size:110px;opacity:.9;padding:10px 5%}
+main{padding:22px 4%;max-width:1500px;margin:auto}.features{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:28px}.feature,.panel,.course,.resource{background:white;border:1px solid var(--line);border-radius:12px;box-shadow:0 3px 12px #17385a08}.feature{text-align:center;padding:20px 10px;cursor:pointer}.feature .emoji{font-size:28px;background:#e8f2ff;color:var(--blue);border-radius:50%;width:58px;height:58px;display:grid;place-items:center;margin:0 auto 10px}.feature strong{display:block;margin-bottom:5px}.feature small{color:var(--muted)}
+.layout{display:grid;grid-template-columns:minmax(0,3fr) minmax(250px,1fr);gap:24px}.section-head{display:flex;align-items:center;justify-content:space-between;margin:8px 0 14px}.section-head h2{font-size:24px;margin:0}.link{background:none;border:0;color:var(--blue);cursor:pointer;font-size:15px}
+.courses{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.course{overflow:hidden}.course-banner{height:110px;background:linear-gradient(135deg,#062846,#0875b8);display:grid;place-items:center;color:white;font-size:44px}.course-body{padding:14px}.course h3{font-size:17px;margin:0 0 7px}.course p{font-size:14px;color:var(--muted);line-height:1.45;min-height:40px;margin:0 0 12px}.course .btn{width:100%;padding:10px}
+.progress{height:7px;background:#e7edf5;border-radius:10px;overflow:hidden;margin:10px 0}.progress span{display:block;height:100%;background:#16b981;width:0}
+.lower{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px}.resource-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.resource{padding:16px;cursor:pointer;text-align:center}.resource b{display:block;margin:7px}.resource small{color:var(--muted)}
+aside .panel{padding:20px;margin-bottom:14px}.quote{text-align:center;font-style:italic;font-size:20px;line-height:1.5;background:#eaf4fc!important}.knowledge{background:#063e70!important;color:white}.announcement{border-bottom:1px solid var(--line);padding:12px 0;font-size:14px;line-height:1.4}.announcement:last-child{border:0}.date{float:right;color:var(--muted);font-size:12px}
+.page{display:none}.page.active{display:block}.notice{padding:14px;background:#eaf4ff;border-radius:9px;margin:14px 0}.quiz-option{display:block;padding:12px;border:1px solid var(--line);border-radius:8px;margin:9px 0;cursor:pointer}.quiz-option:hover{background:#eff6ff}.small-muted{color:var(--muted);font-size:13px}
+footer{background:#102c47;color:white;padding:20px 4%;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:13px}
+@media(max-width:1050px){header{flex-wrap:wrap}.courses{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.features{grid-template-columns:repeat(3,1fr)}.hero-art{font-size:70px}}
+@media(max-width:600px){.features{grid-template-columns:repeat(2,1fr)}.courses,.lower{grid-template-columns:1fr}.hero-art{display:none}header{gap:12px}.search{width:100%}nav{order:3;width:100%}nav button{padding:9px}}
+</style>
+</head>
+<body>
+<header>
+ <div><div class="brand">🎓 Mohan <span>Digital Learning</span></div><div class="tag">Learn · Explore · Practise · Grow</div></div>
+ <nav aria-label="Main navigation">
+  <button class="active" data-page="home">⌂ Home</button><button data-page="courses">▣ Courses</button><button data-page="resources">▤ Resources</button><button data-page="quizzes">☑ Quizzes</button><button data-page="tools">⚒ Tools</button><button data-page="about">ⓘ About</button>
+ </nav>
+ <input id="search" class="search" placeholder="Search courses..." aria-label="Search courses">
+ <button class="login" id="loginBtn">♟ Login</button>
+</header>
+<section class="hero">
+ <div><div>WELCOME TO</div><h1>Mohan <span>Digital Learning</span></h1><h3>Learn Today for a Better Tomorrow</h3>
+ <p>Explore curated courses, interactive resources, hands-on labs and assessments to build your skills for the digital world.</p>
+ <div class="actions"><button class="btn" data-goto="courses">▶ Start Learning</button><button class="btn outline" data-goto="courses">▢ Explore Courses</button></div></div>
+ <div class="hero-art">📚</div>
+</section>
+<main>
+<section id="home" class="page active">
+ <div class="features">
+  <div class="feature" data-goto="courses"><div class="emoji">📖</div><strong>Courses</strong><small>Structured learning paths</small></div>
+  <div class="feature" data-goto="tools"><div class="emoji">⚗️</div><strong>Hands-on Labs</strong><small>Practise and build skills</small></div>
+  <div class="feature" data-goto="quizzes"><div class="emoji">☑️</div><strong>Quizzes</strong><small>Test your knowledge</small></div>
+  <div class="feature" data-goto="about"><div class="emoji">👥</div><strong>Community</strong><small>Learn together</small></div>
+  <div class="feature" data-goto="courses"><div class="emoji">📊</div><strong>Track Progress</strong><small>Monitor and grow</small></div>
+ </div>
+ <div class="layout"><div>
+  <div class="section-head"><h2>📘 Featured Courses</h2><button class="link" data-goto="courses">View All Courses →</button></div>
+  <div class="courses" id="featuredCourses"></div>
+  <div class="lower">
+   <section><div class="section-head"><h2>▤ Learn Resources</h2><button class="link" data-goto="resources">View All →</button></div><div class="resource-grid" id="homeResources"></div></section>
+   <section><div class="section-head"><h2>🔧 Learning Tools</h2><button class="link" data-goto="tools">View All →</button></div><div class="resource-grid" id="homeTools"></div></section>
+  </div>
+ </div><aside>
+  <div class="panel quote">“Continuous learning<br> is the key to success<br> in the digital age.”<br><small>— Mohan Digital Learning</small></div>
+  <div class="panel knowledge"><h3>💡 Today's Knowledge</h3><p class="quote">“Small steps every day lead to big results.”</p></div>
+  <div class="panel"><div class="section-head"><h3>🔔 Announcements</h3><button class="link" data-goto="resources">View All</button></div>
+   <div class="announcement">🔴 New Course: Blockchain Basics is now available! <span class="date">Sep 16, 2026</span></div>
+   <div class="announcement">🟠 Quiz practice is ready. <span class="date">Sep 15, 2026</span></div>
+   <div class="announcement">🟣 Updated lab manuals added. <span class="date">Sep 14, 2026</span></div>
+  </div>
+ </aside></div>
+</section>
+<section id="courses" class="page"><div class="section-head"><h2>📘 All Courses</h2><span class="small-muted">Choose a course to begin</span></div><div class="courses" id="allCourses"></div></section>
+<section id="resources" class="page"><h2>▤ Learning Resources</h2><p class="small-muted">Study materials and practice aids. Select an item to view its description.</p><div class="resource-grid" id="allResources"></div><div class="notice" id="resourceInfo">Choose a resource to see more information.</div></section>
+<section id="quizzes" class="page"><h2>☑ Quick Knowledge Check</h2><p>Try this sample quiz on blockchain and cybersecurity fundamentals.</p><div class="panel" style="padding:22px;max-width:720px"><div id="quizBox"></div><button class="btn" id="nextQuestion">Check Answer</button><p id="quizFeedback" aria-live="polite"></p></div></section>
+<section id="tools" class="page"><h2>⚒ Learning Tools & Labs</h2><p class="small-muted">Open a tool or use the guided lab prompts below.</p><div class="resource-grid" id="allTools"></div><div class="panel" style="padding:20px;margin-top:18px"><h3>Suggested Lab Workflow</h3><ol><li>Read the experiment objective and prerequisites.</li><li>Set up the required software or simulator.</li><li>Perform the activity and capture evidence.</li><li>Reflect on the result and submit your lab notes.</li></ol></div></section>
+<section id="about" class="page"><h2>About Mohan Digital Learning</h2><div class="panel" style="padding:24px;max-width:850px"><h3>Learn · Explore · Practise · Grow</h3><p>Mohan Digital Learning is a learning portal concept for organising digital courses, study resources, practice quizzes and hands-on activities in one place.</p><p>Explore topics including blockchain, Python programming, cybersecurity and computer networks.</p><p class="small-muted">This is a front-end demo. Login, saved progress, accounts and content management require a backend to become persistent.</p></div></section>
+</main>
+<footer><span>© 2026 Mohan Digital Learning. All rights reserved.</span><span>Empowering Learners | Building a Better Tomorrow</span><span>Follow Us: ▶ · in · ◉</span></footer>
+<script>
+const courses=[
+ {title:"Blockchain Technology",desc:"Learn the fundamentals of blockchain and its applications.",icon:"⛓️",category:"Blockchain"},
+ {title:"Python Programming",desc:"Build real-world applications with Python.",icon:"🐍",category:"Programming"},
+ {title:"Cyber Security",desc:"Understand security concepts and hands-on tools.",icon:"🛡️",category:"Security"},
+ {title:"Computer Networks",desc:"Learn networking concepts with practical examples.",icon:"🌐",category:"Networking"},
+ {title:"Solidity & Smart Contracts",desc:"Explore Solidity, contract logic and the EVM.",icon:"📜",category:"Blockchain"},
+ {title:"Web3 & DApps",desc:"Understand decentralised applications and Web3.",icon:"🔗",category:"Blockchain"},
+ {title:"Digital Forensics",desc:"Learn evidence handling and forensic workflows.",icon:"🔎",category:"Security"},
+ {title:"Linux Fundamentals",desc:"Practise command-line and system administration basics.",icon:"🐧",category:"Systems"}
+];
+const resources=[
+ {name:"Lecture Notes",desc:"Download-ready study material",icon:"📄"},
+ {name:"Lab Manuals",desc:"Step-by-step practical guides",icon:"🧪"},
+ {name:"Presentations",desc:"Slides for quick revision",icon:"🖥️"},
+ {name:"Useful Links",desc:"Curated external learning links",icon:"🔗"}
+];
+const tools=[
+ {name:"Code Editor",desc:"Practice programming online",icon:"⌨️",url:"https://www.programiz.com/python-programming/online-compiler/"},
+ {name:"Remix IDE",desc:"Write and test Solidity contracts",icon:"🧩",url:"https://remix.ethereum.org/"},
+ {name:"Cisco Packet Tracer",desc:"Network simulation practice",icon:"🌐",url:"https://www.netacad.com/"},
+ {name:"Cybersecurity Practice",desc:"Explore guided security learning",icon:"🛡️",url:"https://tryhackme.com/"}
+];
+const $=s=>document.querySelector(s);
+function courseCard(c){return `<article class="course" data-title="${c.title.toLowerCase()}"><div class="course-banner">${c.icon}</div><div class="course-body"><h3>${c.title}</h3><p>${c.desc}</p><div class="small-muted">Category: ${c.category}</div><div class="progress"><span></span></div><button class="btn start-course" data-course="${c.title}">Start Course</button></div></article>`}
+function resourceCard(r){return `<div class="resource" tabindex="0" data-resource="${r.name}"><div style="font-size:27px">${r.icon}</div><b>${r.name}</b><small>${r.desc}</small></div>`}
+function toolCard(t){return `<div class="resource tool-card" tabindex="0" data-tool="${t.name}"><div style="font-size:27px">${t.icon}</div><b>${t.name}</b><small>${t.desc}</small></div>`}
+$("#featuredCourses").innerHTML=courses.slice(0,4).map(courseCard).join("");
+$("#allCourses").innerHTML=courses.map(courseCard).join("");
+$("#homeResources").innerHTML=resources.map(resourceCard).join("");
+$("#allResources").innerHTML=resources.map(resourceCard).join("");
+$("#homeTools").innerHTML=tools.slice(0,4).map(toolCard).join("");
+$("#allTools").innerHTML=tools.map(toolCard).join("");
+function showPage(id){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+document.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.goto)));
+$("#search").addEventListener("input",e=>{const q=e.target.value.toLowerCase();showPage("courses");document.querySelectorAll("#allCourses .course").forEach(c=>c.style.display=c.dataset.title.includes(q)?"":"none")});
+document.addEventListener("click",e=>{
+ const start=e.target.closest(".start-course");if(start){const card=start.closest(".course");card.querySelector(".progress span").style.width="15%";start.textContent="Course Started ✓";start.disabled=true;alert(`Welcome to ${start.dataset.course}! Your demo progress has started.`)}
+ const r=e.target.closest("[data-resource]");if(r){$("#resourceInfo").textContent=`${r.dataset.resource}: This demo item is a placeholder. Add your own notes, PDF files or links to connect real course material.`;showPage("resources")}
+ const t=e.target.closest("[data-tool]");if(t){const item=tools.find(x=>x.name===t.dataset.tool);if(item?.url)window.open(item.url,"_blank","noopener,noreferrer")}
+});
+$("#loginBtn").addEventListener("click",()=>alert("Login is a demo feature. Connect an authentication service to enable student accounts."));
+const questions=[
+ {q:"Which feature helps blockchain participants agree on the state of a ledger?",opts:["Consensus mechanism","Screen brightness","File compression"],a:0,why:"Consensus mechanisms help distributed participants agree on ledger updates."},
+ {q:"What does CIA stand for in information security?",opts:["Control, Internet, Access","Confidentiality, Integrity, Availability","Central Intelligence Agency"],a:1,why:"The CIA triad describes confidentiality, integrity and availability."},
+ {q:"Which language is commonly used to write Ethereum smart contracts?",opts:["Solidity","HTML only","SQL"],a:0,why:"Solidity is a widely used language for Ethereum smart contracts."}
+];let qi=0,selected=-1,score=0,answered=false;
+function renderQuestion(){const q=questions[qi];selected=-1;answered=false;$("#quizFeedback").textContent="";$("#nextQuestion").textContent="Check Answer";$("#quizBox").innerHTML=`<p class="small-muted">Question ${qi+1} of ${questions.length} · Score ${score}</p><h3>${q.q}</h3>${q.opts.map((o,i)=>`<label class="quiz-option"><input type="radio" name="answer" value="${i}"> ${o}</label>`).join("")}`}
+$("#quizBox").addEventListener("change",e=>{if(e.target.name==="answer")selected=Number(e.target.value)});
+$("#nextQuestion").addEventListener("click",()=>{if(!answered){if(selected<0){$("#quizFeedback").textContent="Please select an answer first.";return}answered=true;const q=questions[qi];const correct=selected===q.a;if(correct)score++;$("#quizFeedback").textContent=(correct?"Correct! ":"Not quite. ")+q.why;$("#nextQuestion").textContent=qi===questions.length-1?"Show Result":"Next Question";return}if(qi<questions.length-1){qi++;renderQuestion()}else{$("#quizBox").innerHTML=`<h3>Quiz complete!</h3><p>You scored ${score} out of ${questions.length}.</p><p>Review the topics and try again to practise.</p>`;$("#nextQuestion").textContent="Try Again";$("#nextQuestion").onclick=()=>{qi=0;score=0;$("#nextQuestion").onclick=null;renderQuestion()}}});
+renderQuestion();
+</script>
+</body>
+</html>
