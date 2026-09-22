@@ -1,4 +1,4 @@
-** Learn · Explore · Practise · Grow**
+** **Learn · Explore · Practise · Grow****
 
 **Vision :**
 To empower learners through accessible, technology-driven education that encourages continuous learning, practical exploration, innovation, and professional growth.
